@@ -8,9 +8,9 @@ int main()
         printf("the address of a variable=%p",(void*)a);
 }
 ```
--(void*) → safely converts the address to a generic pointer type (void*), as required by the C standard.
+- (void*) → safely converts the address to a generic pointer type (void*), as required by the C standard.
 
-##Write a program to print size of pointer variables.
+## Write a program to print size of pointer variables.
 ```c
 #include<stdio.h>
 int main()
