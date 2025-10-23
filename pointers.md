@@ -9,6 +9,7 @@ int main()
 }
 ```
 -(void*) → safely converts the address to a generic pointer type (void*), as required by the C standard.
+
 ##Write a program to print size of pointer variables.
 ```c
 #include<stdio.h>
