@@ -156,8 +156,7 @@ int main()
 }
 
 ```
-## Write a program to print the value and address of array elements by subscripting a pointer
-variable.
+## Write a program to print the value and address of array elements by subscripting a pointer variable.
 ```c
 #include <stdio.h>
 
