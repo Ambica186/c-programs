@@ -173,7 +173,7 @@ int main()
     return 0;
 }
 ```
-## answer following question
+## Answer following question
 ```c
 # include <stdio.h>
 void fun(int *ptr)
@@ -189,4 +189,20 @@ return 0;
 }
 ```
 - answer=30
-
+## Answer following question
+```c
+include <stdio.h>
+void fun(int x)
+{
+x = 30;
+}
+int main()
+{
+int y = 20;
+fun(y);
+printf("%d", y);
+return 0;
+}
+```
+- ans=20
+  
