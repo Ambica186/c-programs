@@ -67,5 +67,110 @@ int main()
 ```
 ## C program to illustrate pointer arithmetic
 ```c
+#include <stdio.h>
 
+int main() {
+    int arr[] = {10, 20, 30, 40};
+    int *ptr = arr;                     // Pointer to first element
+    int n = sizeof(arr)/sizeof(arr[0]); // Array size
 
+    printf("Initial pointer: %p, value = %d\n", ptr, *ptr);
+
+    // Postfix increment
+    printf("\nPostfix increment (ptr++):\n");
+    printf("Before increment: %p, value = %d\n", ptr, *ptr);
+    printf("After increment:  %p, value = %d\n", ptr++, *ptr); // ptr moves after printing
+    // Note: *ptr now points to next element
+
+    // Prefix increment
+    printf("\nPrefix increment (++ptr):\n");
+    printf("Pointer after prefix increment: %p, value = %d\n", ++ptr, *ptr);
+
+    // Postfix decrement
+    printf("\nPostfix decrement (ptr--):\n");
+    printf("Before decrement: %p, value = %d\n", ptr, *ptr);
+    printf("After decrement:  %p, value = %d\n", ptr--, *ptr);
+    // Note: *ptr now points to previous element
+
+    // Prefix decrement
+    printf("\nPrefix decrement (--ptr):\n");
+    printf("Pointer after prefix decrement: %p, value = %d\n", --ptr, *ptr);
+
+    return 0;
+}
+```
+## Write a Program to print the value and address of elements of an array using pointers notation.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[]={10,20,30,40,50};
+        int *ptr=arr;
+        int n=sizeof(arr)/sizeof(arr[0]);
+        for(int i=0;i<n;i++)
+        {
+                printf("value=%d,address=%p\n",*(ptr+i),(ptr+i));
+        }
+        return 0;
+}
+/*
+ * #include <stdio.h>
+
+int main()
+{
+    int arr[] = {10, 20, 30, 40, 50};
+    int *ptr = arr;
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("value = %d, address = %p\n", *ptr, ptr);
+        ptr++;  // move pointer to the next element
+    }
+
+    return 0;
+}
+*/
+```
+## Write a program to print the value of array elements using pointers and subscript notation.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[]={10,20,30,40,50};
+        int *ptr=arr;
+        int n=sizeof(arr)/sizeof(arr[0]);
+        printf("subscript notations\n");
+        for(int i=0;i<n;i++)
+        {
+                printf("%d\n",ptr[i]);
+                printf("%d\n",i[ptr]);
+        }
+        printf("pointers notations");
+        for(int i=0;i<n;i++)
+        {
+                printf("%d\n",*(ptr+i));
+                printf("%d\n",*(i+ptr));
+        }
+        return 0;
+}
+
+```
+## Write a program to print the value and address of array elements by subscripting a pointer
+variable.
+```c
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = {10, 20, 30, 40, 50};
+    int *ptr = arr;
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Value\tAddress\n");
+    for (int i = 0; i < n; i++)
+        printf("%d\t%p\n", ptr[i], &ptr[i]);
+
+    return 0;
+}
+```
