@@ -205,4 +205,156 @@ return 0;
 }
 ```
 - ans=20
+## Write a program to dereference a pointer to an array.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[]={10,20,30,40,50};
+        int (*ptr)[5]=&arr;
+        for(int i=0;i<5;i++)
+                printf("%d\n",(*ptr)[i]);
+        return 0;
+}
+```
+## Program to understand the difference between a to an integer and a pointer to an array of integers.
+```c
+#include<stdio.h>
+int main()
+{
+        int a=10;
+        int *ptr=&a;//pointer to an integer
+        printf("the value of a = %d\n",a);
+        printf("the address of a = %p\n",ptr);
+        printf("the value at ptr= %d\n",*ptr);
+        int arr[]={10,20,30,40,50};
+        int (*ptr1)[5]=&arr;
+        for(int i=0;i<5;i++)
+        {
+                printf("%d\n",(*ptr1)[i]);
+                printf("%p\n",&(*ptr1)[i]);
+        }
+}
+```
+## program to print the values and address of elements of 2-d array.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[3][3];
+        for(int i=0;i<3;i++)
+        {
+                for(int j=0;j<3;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<3;i++)
+        {
+                for(int j=0;j<3;j++)
+                {
+                        printf("\narr[%d][%d]= %d and address= %p",i,j,arr[i][j],(void*)&arr[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
+## Program to print elements of a 2-D array by subscripting a pointer to an array variable.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[3][3];
+        int (*ptr)[3]=arr;
+        for(int i=0;i<3;i++)
+        {
+                for(int j=0;j<3;j++)
+                {
+                        scanf("%d",&ptr[i][j]);
+                }
+        }
+        for(int i=0;i<3;i++)
+        {
+                for(int j=0;j<3;j++)
+                {
+                        printf(" %d ",ptr[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
+## Program to print elements of a 3-D array using pointer notation.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[2][3][3];
+        int (*ptr)[3][3]=arr;
+        for(int i=0;i<2;i++)
+        {
+                for(int j=0;j<3;j++)
+                {
+                        for(int k=0;k<3;k++)
+                        {
+                        scanf("%d",&ptr[i][j][k]);
+                        }
+                }
+        }
+        for(int i=0;i<2;i++)
+        {
+                for(int j=0;j<3;j++)
+                {
+                        for(int k=0;k<3;k++)
+                        {
+                                printf(" %d ",ptr[i][j][k]);
+                        }
+                        printf("\n");
+                }
+
+                printf("\n");
+        }
+}
+```
+## Write a simple program for call by value.
+```c
+#include<stdio.h>
+int fun(int x, int y)
+{
+        x+=10;
+        y+=10;
+        printf("%d %d",x,y);
+
+}
+
+
+int main()
+{
+        int a,b;
+        scanf("%d%d",&a,&b);
+        fun(a,b);
+        printf("\n%d %d",a,b);
+        return 0;
+}
+```
+## Write a simple program for call by reference.
+```c
+#include<stdio.h>
+void fun(int *x, int *y)
+{
+        //printf("%d %d",*x,*y);
+        *x+=10;
+        *y+=5;
+}
+
+
+int main()
+{
+        int a,b;
+        scanf("%d%d",&a,&b);
+        fun(&a,&b);
+        printf("%d %d",a,b);
+        return 0;
+}
+```
+
   
