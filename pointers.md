@@ -356,5 +356,166 @@ int main()
         return 0;
 }
 ```
+## Write a program to dereference a pointer to an array.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[]={10,20,30,40,50};
+        int (*ptr)[5]=&arr;
+        for(int i=0;i<5;i++)
+                printf("%d\n",(*ptr)[i]);
+        return 0;
+}
+```
+##  Write the output of the following program ?
+```c
+# include <stdio.h>
+void fun(int *ptr)
+{
+*ptr = 30;
+}
+int main()
+{
+int y = 20;
+fun(&y);
+printf("%d", y);
+return 0;
+}
+```
+- answer=30
+## Write the output of the following program ?
+```c
+#include <stdio.h>
+void changeValue(int *ptr) {
+*ptr = 30;
+}
+int main() {
+int val = 20;
+int *ptr = &val;
+changeValue(ptr);
+printf("%d", val);
+}
+```
+- answer=30
+## Write the output of the following program ?
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+int *arr = (int *)calloc(5, sizeof(int));
+for (int i = 0; i < 5; i++) {
+*(arr + i) = i;
+}
+printf("%d", arr[3]);
+free(arr);
+}
+```
+- answwe=3
+## Write the output of the following program ?
+```c
+#include<stdio.h>
+void f(int *p, int *q)
+{
+p = q;
+*p = 2;
+}
+int i = 0, j = 1;
+int main()
+{
+f(&i, &j);
+printf("%d %d", i, j);
+getchar();
+return 0;
+}
+```
+- answer=0,2
+## Write the output of the following program ?
+```c
+#include<stdio.h>
+int main()
+{
+int a, b = 10;
+a = -b--;
+printf("a = %d, b = %d", a, b);
+return 0;
+}
+```
+- answer=a= -10, b=9
+## Write a program to pass a 1D array to a function.
+```c
+#include<stdio.h>
+void fun(int *arr,int size)
+{
+        for(int i=0;i<size;i++)
+                printf("%d ",arr[i]);
+}
+int main()
+{
+        int arr[]={10,20,30,40,50};
+        int size=sizeof(arr)/sizeof(arr[0]);
+        fun(arr,size);
+        return 0;
+}
+```
+## Program to return more than one value from a function using call by reference
+```c
+#include<stdio.h>
+int fun(int x,int y,int *sum,int* diff)
+{
+        *sum=x+10;
+        *diff=y-10;
+}
+int main()
+{
+        int a,b,s,d;
+        scanf("%d%d",&a,&b);
+        fun(a,b,&s,&d);
+        printf("%d %d",s,d);
+        return 0;
+}
+```
+## Create a function that swaps two numbers using pointers
+```c
+#include<stdio.h>
+void fun(int *x,int *y)
+{
+        int temp;
+        temp=*x;
+        *x=*y;
+        *y=temp;
+}
+int main()
+{
+        int a,b;
+        scanf("%d%d",&a,&b);
+        fun(&a,&b);
+        printf("%d %d",a,b);
+        return 0;
+}
+```
+## Implement a function that returns the length of a string using pointers
+```c
+#include<stdio.h>
+int astrlen(char *ptr)
+{
+        int i=0;
+        while(*ptr)
+        {
+                ptr++;
+                i++;
+        }
+        return i;
+}
+int main()
+{
+        char a[10]="ambica";
+        int size=astrlen(a);
+        printf("%d",size);
+        return 0;
+}
+```
+
+
 
   
