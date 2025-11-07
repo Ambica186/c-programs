@@ -515,6 +515,102 @@ int main()
         return 0;
 }
 ```
+## Write a program to find the maximum and minimum elements in an array using pointers
+```c
+#include<stdio.h>
+#include<limits.h>
+int main()
+{
+        int arr[]={8,1,4,10,12};
+        int *ptr=arr;
+        int min=INT_MAX;
+        int max=INT_MIN;
+        int n=sizeof(arr)/sizeof(arr[0]);
+        for(int i=0;i<n;i++)
+        {
+                if(ptr[i]>max)
+                {
+                        max=ptr[i];
+                }
+                if(ptr[i]<min)
+                        min=ptr[i];
+        }
+        printf("the maximum number=%d\n",max);
+        printf("the minimum number=%d\n",min);
+}
+```
+## Develop a function to reverse a string in place using pointers.
+```c
+#include<stdio.h>
+#include<string.h>
+void arev(char *ptr,int n)
+{
+        for(int i=0;i<n/2;i++)
+        {
+                int temp;
+                temp=ptr[i];
+                ptr[i]=ptr[n-1-i];
+                ptr[n-1-i]=temp;
+        }
+}
+int main()
+{
+        char arr[10]="linux";
+        char *ptr=arr;
+        int n=strlen(arr);
+        arev(ptr,n);
+        for(int i=0;i<n;i++)
+                printf("%c",ptr[i]);
+}
+```
+## Write a program that calculates the sum of all elements in an integer array using pointer arithmetic.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[]={1,2,3,4,5};
+        int *ptr=arr;
+        int n=sizeof(arr)/sizeof(arr[0]);
+        int sum=0;
+        for(int i=0;i<n;i++)
+                sum+= *(ptr+i);
+        printf("%d",sum);
+}
+```
+## Implement a function to copy one string into another using pointers, without using any standard library functions
+```c
+#include<stdio.h>
+#include<string.h>
+//char* astrcpy(char *dst , char *src)
+void astrcpy(char *dst , char *src , int n)
+{
+ char *temp=dst;
+ while((*dst=*src)!='\0')
+ {
+         src++;
+         dst++;
+ }
+ for(int i=0;i<n;i++)
+ {
+       printf("%c",temp[i]);
+       }
+ //return temp;
+}
+
+int main()
+{
+       char arr1[10]="Linux";
+       char arr2[10];
+       char *ptr1=arr1;
+       char *ptr2=arr2;
+       int n=strlen(arr1);
+       astrcpy(ptr2,ptr1,n);
+       //char *ptr=astrcpy(ptr2,ptr1);
+    //   for(int i=0;i<strlen(arr1);i++)
+//             printf("%c ",ptr[i]);
+}
+```
+
 
 
 
