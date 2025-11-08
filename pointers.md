@@ -610,8 +610,153 @@ int main()
 //             printf("%c ",ptr[i]);
 }
 ```
+## Write a program to compare two strings lexicographically (like the strcmp function) using pointers.
+```c
+#include<stdio.h>
+int mystrcmp(char *ptr1, char *ptr2)
+{
+        while(*ptr1 && *ptr2 && (*ptr1==*ptr2))
+        {
+                ptr1++;
+                ptr2++;
+        }
+        return (*ptr1-*ptr2);
+}
+int main()
+{
+        char arr1[100],arr2[100];
+        printf("enter first string\n");
+        scanf("%s",arr1);
+        printf("enter second string \n");
+        scanf("%s",arr2);
+        char *ptr1=arr1,*ptr2=arr2;
+        int res=mystrcmp(ptr1,ptr2);
+        if(res==0)
+                printf("both strings are equal");
+        else if(res>0)
+                printf("first string is greater than second string");
+        else
+                printf("second string is greater than first string");
+}
+```
+## Develop a function to reverse an array of integers in place using pointers.
+```c
+#include<stdio.h>
+void mystrrev(int *ptr1, int n)
+{
+        for(int i=0;i<n/2;i++)
+        {
+                int temp=ptr1[i];
+                ptr1[i]=ptr1[n-1-i];
+                ptr1[n-1-i]=temp;
+        }
+        for(int i=0;i<n;i++)
+                printf("%d ",ptr1[i]);
+}
 
+int main()
+{
+        int arr[]={10,20,30,40,50};
+        int *ptr1=arr;
+        int n=sizeof(arr)/sizeof(arr[0]);
+        mystrrev(ptr1,n);
+}
+```
+## Write a program to find the largest element using Dynamic Memory Allocation.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<limits.h>
+int main()
+{
+        int n;
+        printf("enter number of elements");
+        scanf("%d",&n);
+        int *ptr;
+        ptr = malloc(n*sizeof(int));
+        if(ptr==NULL)
+        {
+        return 1;
+        }
+        for(int i=0;i<n;i++)
+        {
+           scanf("%d",&ptr[i]);
+        }
+        int max=INT_MIN;
+        for(int i=0;i<n;i++)
+        {
+                if(ptr[i]>max)
+                {
+                        max=ptr[i];
+                }
+        }
+        printf("the maximum number in the array = %d",max);
+        free(ptr);
+        ptr=NULL;
+        return 0;
+}
+```
+## Write a program in C to calculate the length of a string using a pointer
+```c
+#include<stdio.h>
+void astrlen(char *ptr)
+{
+        int i=0;
+        while(*ptr != '\0')
+        {
+                ptr++;
+                i++;
+        }
+        printf("the length of string = %d",i);
+}
 
+int main()
+{
+        char str[10];
+        printf("enter a string");
+        scanf("%s",str);
+        char *ptr=str;
+        astrlen(ptr);
+}
+```
+## Write a program to swap elements using call by reference.
+```c
+#include<stdio.h>
+void swap(int *p,int *q)
+{
+        int temp=*p;
+             *p=*q;
+             *q=temp;
 
+}
 
-  
+int main()
+{
+        int a,b;
+        printf("enter two numbers");
+        scanf("%d%d",&a,&b);
+        int *p=&a;
+        int *q=&b;
+        swap(p,q);
+        printf("%d %d",a,b);
+}
+```
+## Write a program to find the factorial of a given number using pointers.
+```c
+#include<stdio.h>
+int main()
+{
+        int n;
+        int fact=1;
+        scanf("%d",&n);
+        int *ptr=&n;
+        while(*ptr>0)
+        {
+                fact=fact*(*ptr);
+                (*ptr)--;
+        }
+        printf("%d",fact);
+        return 0;
+}
+```
+
