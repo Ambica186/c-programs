@@ -759,4 +759,31 @@ int main()
         return 0;
 }
 ```
+## Write a program to count the number of vowels and consonants in a string using a pointer.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char a[100];
+        printf("enter a string");
+        gets(a);
+        char *p=a;
+        int n=strlen(a);
+        int v_count=0,c_count=0;
+        for(int i=0;i<n;i++)
+        {
+                if(*p=='a'||*p=='e'||*p=='i'||*p=='o'||*p=='u'||*p=='A'||*p=='E'||*p=='I'||*p=='O'||*p=='U')
+                        v_count++;
+                else if (*p >= 'A' && *p <= 'Z' || *p >= 'a' && *p <= 'z')
+                        c_count++;
+                p++;
+        }
+        printf("number of vowels in a string =%d\n",v_count);
+        printf("number of consonants in a string = %d",c_count);
+        return 0;
+}
+```
+## Write a program to sort an array using a pointer
+```c
 
