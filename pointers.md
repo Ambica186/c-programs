@@ -786,4 +786,181 @@ int main()
 ```
 ## Write a program to sort an array using a pointer
 ```c
+#include<stdio.h>
+int main()
+{
+        int arr[]={10,2,20,6,8};
+        int *p=arr;
+        int n=sizeof(arr)/sizeof(arr[0]);
+        for(int i=0;i<n-1;i++)
+        {
+                for(int j=0;j<n-i-1;j++)
+                {
+                        int temp;
+                        if(*(p+j) > *(p+j+1))
+                        {
+                                temp=*(p+j);
+                                *(p+j)=*(p+j+1);
+                                *(p+j+1)=temp;
+                        }
+                }
 
+        }
+        for(int i=0;i<n;i++)
+                printf("%d ",*(p+i));
+        return 0;
+}
+```
+## Write a program to demonstrate how a function returns a pointer.
+```c
+#include<stdio.h>
+int* getmax(int *x, int* y)
+{
+        if(*x>*y)
+                return x;
+        else
+                return y;
+}
+int main()
+{
+        int a=10,b=20;
+        int *p;
+        p=getmax(&a,&b);
+        printf("the greatest number=%d , it's address=%p",*p,p);
+        return 0;
+}
+```
+## Write a program to compute the sum of all elements in an array using pointers
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[]={10,20,30,40,50};
+        int *p=arr;
+        int sum=0;
+        int n=sizeof(arr)/sizeof(arr[0]);
+        for(int i=0;i<n;i++)
+        {
+                sum+=*p;
+                p++;
+        }
+        printf("sum=%d",sum);
+        return 0;
+}
+```
+## Write a program to print the elements of an array in reverse order
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[]={10,20,30,40,50};
+        int temp;
+        int n=sizeof(arr)/sizeof(arr[0]);
+        for(int i=0;i<n/2;i++)
+        {
+                temp=arr[i];
+                arr[i]=arr[n-1-i];
+                arr[n-1-i]=temp;
+        }
+        for(int i=0;i<n;i++)
+                printf("%d ",arr[i]);
+        return 0;
+}
+```
+## Write the output of the following program ?
+```c
+#include<stdio.h>
+int main()
+{
+int a = 12;
+void *ptr = (int *)&a;
+printf("%d", *ptr);
+getchar();
+return 0;
+}
+```
+- ans:-compilation error
+- Because:
+-ptr is a void pointer
+-A void pointer does not have a type, so it cannot be dereferenced directly
+-You must typecast it back before dereferencing
+-printf("%d",*(int *)ptr);---> ans:- 12
+## Write the output of the following program ?
+```c
+int main()
+{
+int array[5][5];
+printf("%d",( (array == *array) && (*array == array[0]) ));
+return 0;
+}
+```
+-ans:- 1
+- array,*array,array[0] refers to same memory location.
+## Write the output of the following program ?
+```c
+#include<stdio.h>
+int main()
+{
+int x = 10;
+int *y, **z;
+y = &x;
+z = &y;
+printf("x = %d, y = %d, z = %d\n", x, *y, **z);
+return 0;
+}
+```
+-ans:-x=10,y=10,z=10
+## Write the output of the following program ?
+```c
+#include <stdio.h>
+int main()
+{char a = 30;
+char b = 40;
+char c = 10;
+char d = (a * b) / c;
+printf ("%d ", d);
+return 0;
+}
+```
+-ans:- d=120
+## Write the output of the following program ?
+```c
+#include <stdio.h>
+int main()
+{
+int arr[] = {};
+printf("%d", sizeof(arr));
+return 0;
+}
+```
+- ans:-0,(in standard c-it's an error) 
+## Write the output of the following program ?
+```c
+#include<stdio.h>
+int main()
+{
+int a[2][3] = {2,1,3,2,3,4};
+printf("Using pointer notations:\n");
+printf("%d %d %d\n", *(*(a+0)+0), *(*(a+0)+1), *(*(a+0)+2));
+printf("Using mixed notations:\n");
+printf("%d %d %d\n", *(a[1]+0), *(a[1]+1), *(a[1]+2));
+return 0;
+}
+```
+-ans:-
+-Using pointer notations:
+-2 1 3
+-Using mixed notations:
+-2 3 4
+## Write the output of the following program ?
+```c
+int main() {
+int a = 10, *j;
+void *k;
+j = k = &a;
+j++;
+k++;
+return 0;
+}
+```
+-ans:- no output or error , void pointer cannot be incremented because it does not have a fixed size
