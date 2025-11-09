@@ -958,9 +958,18 @@ int main() {
 int a = 10, *j;
 void *k;
 j = k = &a;
+printf("%p\n",j);
+printf("%p\n",k);
 j++;
 k++;
+printf("%p\n",j);
+printf("%p\n",k);
 return 0;
 }
 ```
 -ans:- no output or error , void pointer cannot be incremented because it does not have a fixed size
+- gcc treates void* as char*
+- 0x7ffe0f233584(j)
+-0x7ffe0f233584(k)
+-0x7ffe0f233588(j++)
+-0x7ffe0f233585(k++)
