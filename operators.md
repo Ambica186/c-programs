@@ -406,6 +406,53 @@ return 0;
 4. %, ->, =, +
 ```
 - ans:- 1) ->, %, +, =
-## 28)Toggle a given range of bits
+## 28)Toggle a given range of bits For example, take the number 245. The equivalent binary format is 11110101and the range is 4 to 7. So, the output should be 000001010 which is 5 in decimal.
+```c
+#include<stdio.h>
+int main()
+{
+    int num,l,r,mask,result;
+    scanf("%d",&num);
+    scanf("%d%d",&l,&r);
+    mask=((1<<(r-l+1))-1)<<l;
+    result=num^mask;
+    printf("%d",result);
+    return 0;
+}
+```
+## 29)How to check if a particular bit is set or not in a number?
+```c
+#include<stdio.h>
+int main()
+{
+        int num,i;
+        printf("enter a number\n");
+        scanf("%d",&num);
+        printf(" enter a bit to check whether it is set or not\n ");
+        scanf("%d",&i);
+        if(num & (1<<i)) printf("the bit is set");
+        else printf("bit is not set");
+        return 0;
+}
+```
+## 30)How to represent the above all things in MACRO for Real-time code?
+```c
+#include<stdio.h>
+#define check_bit(num,i) (num & (1<<i))
+#define set_bit(num,i) (num |= (1<<i))
+#define toggle_bit(num,i) (num ^= (1<<i))
+#define clear_bit(num,i) (num &= ~(1<<i))
+int main()
+{
+        int num,i;
+        scanf("%d%d",&num,&i);
+        if(check_bit(num,i)) printf("bit is set=1\n");
+        else printf("bit is 0");
+        set_bit(num,i);
+        printf("\nafter setting bit\n");
+        printf("%d %d",num,i);
+        return 0;
+}
+```
 
 
