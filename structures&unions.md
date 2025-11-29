@@ -78,3 +78,83 @@ c) To improve code readability and maintainability.
 d) To dynamically change the data type of a variable during program execution.
 ```
 - a) To group related data of different types under a single name.
+## 11. What is the difference between shallow copy and deep copy when copying structures?
+```c
+a) Shallow copy copies only the structure itself, while deep copy copies the members recursively.
+b) Shallow copy copies the structure by value, while deep copy copies by reference.
+c) Shallow copy uses the = operator, while deep copy requires a custom function.
+d) There is no difference; both terms refer to the same process.
+```
+- a) Shallow copy copies only the structure itself, while deep copy copies the members recursively.
+## 12. What is the use of self-referential structures in C?
+```c
+a) To represent hierarchical relationships between data, like a tree structure.
+b) To create circular references that can lead to memory leaks.
+c) To improve code efficiency by avoiding redundant member declarations.
+d) Self-referential structures are not allowed in C.
+```
+- a) To represent hierarchical relationships between data, like a tree structure.
+## 13. What are bit fields in C?
+```c
+a) A way to pack multiple small data types (like flags) into a single byte of memory.
+b) A mechanism to define custom operators for user-defined data types.
+c) A technique to dynamically allocate memory for structures during runtime.
+d) Bit fields are not relevant to structures in C.
+```
+- a) A way to pack multiple small data types (like flags) into a single byte of memory.
+## 14. How can you compare two structures for equality in C?
+```c
+a) By comparing the addresses of the structure variables.
+b) By using a built-in compare function for structures.
+c) By writing a custom function that compares each member individually.
+d) Structures cannot be compared for equality.
+```
+- c) By writing a custom function that compares each member individually.
+## 15. What is the potential consequence of accessing a union member that hasn’t been initialized?
+```c
+a) The program will crash due to undefined behavior.
+b) The value accessed will be the same as the previously accessed member.
+c) The value accessed will be garbage or random data.
+d) There is no consequence; any member can be accessed regardless of initialization.
+```
+- c) The value accessed will be garbage or random data.
+## 16. What is the use of anonymous structures in C?
+```c
+a) To declare a structure without a name, used only once within a function.
+b) To define a structure template that can be used to create multiple instances with different names.
+c) To create a structure that cannot be accessed directly and must be used through a pointer.
+d) Anonymous structures are not supported in C.
+```
+- a) To declare a structure without a name, used only once within a function.
+## 17. How can you define a structure within another structure in C?
+```c
+a) By using nested structures, where one structure is a member of another.
+b) By creating a pointer to the inner structure within the outer structure.
+c) By defining both structures separately and using them independently.
+d) Structures cannot be members of other structures in C.
+```
+- a) By using nested structures, where one structure is a member of another.
+## 18. Create a structure to represent a student with the following members: name (string), roll number(int), and marks (float). Write a function to display the details of a student.
+```c
+#include<stdio.h>
+struct student
+{
+        char name[10];
+        int rollno;
+        float marks;
+};
+void display(struct student s1)
+{
+        printf("the student details are:\n");
+        printf("name = %s\n",s1.name);
+        printf("roll number = %d\n",s1.rollno);
+        printf("marks = %f",s1.marks);
+}
+int main()
+{
+        struct student s1={"ammu",463,300.0};
+        display(s1);
+return 0;
+}
+```
+## 19. Define a union to store either an integer or a floatingpoint number. Write a function to accept the type of data (integer or float) and then read the corresponding value from the user. Store the value in the union and print it.
