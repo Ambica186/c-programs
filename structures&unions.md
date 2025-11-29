@@ -158,3 +158,58 @@ return 0;
 }
 ```
 ## 19. Define a union to store either an integer or a floatingpoint number. Write a function to accept the type of data (integer or float) and then read the corresponding value from the user. Store the value in the union and print it.
+## 33. Analyze the following code snippet and explain the potential issue:
+```c
+struct person {
+char name[50];
+int age;
+};
+int main() {
+struct person p1;
+strcpy(p1.name, "John Doe");
+p1.age = 30;
+printf("Name: %s, Age: %d\n", p1.name, p1.age);
+return 0;
+}
+```
+- Name: John Doe, Age: 30
+## 34. Consider the following code:
+```c
+union data {
+int i;
+float f;
+};
+int main() {
+union data value;
+value.i = 10;
+printf("Float value: %f\n", value.f);
+return 0;
+}
+```
+- Explain what happens when the code prints the float value. Why might this be unexpected?
+- Printing value.f after assigning value.i reads the same memory as a float. Since the bits represent an integer, not a float, the output is undefined and may appear as 0.000000 or some garbage value. This is unexpected because it does not equal 10.0.
+
+## 35. Analyze the following code snippet and explain the potential issue:
+```c
+struct student {
+int *marks; // Pointer to an integer
+int num_subjects;
+};
+int main() {
+struct student s1;
+s1.num_subjects = 5;
+s1.marks = malloc(s1.num_subjects * sizeof(int)); // Allocate memory for marks
+// ... (use s1.marks to store marks)
+free(s1.marks); // Deallocate memory
+return 0;
+}
+```
+- Explain what happens if the code doesn't call free(s1.marks) before exiting the function.
+- Answer:
+- `s1` is a local variable created in the **stack frame** of `main`. Its pointer `marks` holds the base address of memory allocated on the **heap** using -`malloc`. If `free(s1.marks)` is not called:
+- 1. The memory allocated on the **heap** is **not automatically deallocated**.
+- 2. When `main` ends, `s1` goes out of scope and its stack memory is destroyed.
+- 3. The base address of the heap memory is lost, making it **inaccessible**.
+- 4. This results in a **memory leak**, as the allocated memory remains reserved but cannot be used again.
+- Conclusion:
+- Whenever memory is allocated dynamically using `malloc` (or similar functions), it is **mandatory to deallocate it using `free()`** to prevent memory leaks and - wastage of resources.
