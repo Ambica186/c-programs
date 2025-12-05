@@ -213,3 +213,23 @@ return 0;
 - 4. This results in a **memory leak**, as the allocated memory remains reserved but cannot be used again.
 - Conclusion:
 - Whenever memory is allocated dynamically using `malloc` (or similar functions), it is **mandatory to deallocate it using `free()`** to prevent memory leaks and - wastage of resources.
+## 36. Analyze the following code snippet and explain the potential issue:
+```c
+struct data {
+int i;
+char str[20];
+};
+void print_data(struct data *d) {
+printf("Integer: %d\n", d->i);
+printf("String: %s\n", d->str);
+}
+int main() {
+struct data d1;
+d1.i = 10;
+strcpy(d1.str, "Hello");
+print_data(&d1);
+return 0;
+}
+```
+- Explain what happens if the strcpy function in print_data writes beyond the allocated memory for the str member. 
+- Writing beyond str in strcpy leads to buffer overflow, causing memory corruption, undefined behavior, crashes, or security vulnerabilities. Always ensure the copied string fits or use safer functions like strncpy.
