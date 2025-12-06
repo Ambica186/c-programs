@@ -231,5 +231,105 @@ print_data(&d1);
 return 0;
 }
 ```
-- Explain what happens if the strcpy function in print_data writes beyond the allocated memory for the str member. 
+- Explain what happens if the strcpy function in print_data writes beyond the allocated memory for the str member.
 - Writing beyond str in strcpy leads to buffer overflow, causing memory corruption, undefined behavior, crashes, or security vulnerabilities. Always ensure the copied string fits or use safer functions like strncpy.
+## 19. Define a union to store either an integer or a floatingpoint number. Write a function to accept the type of data (integer or float) and then read the corresponding value from the user. Store the value in the union and print it.
+```c
+#include<stdio.h>
+union Number
+{
+        int i;
+        float f;
+};
+void readandprint()
+{
+        union Number num;
+        int choice;
+        printf("enter 1 for integer and enter 2 for float\n");
+        scanf("%d",&choice);
+        if(choice == 1)
+        {
+                printf("enter a integer number\n");
+                scanf("%d",&num.i);
+                printf("entered integer number is=%d\n",num.i);
+        }
+        else if(choice == 2)
+        {
+                printf("enter a float number\n");
+                scanf("%f",&num.f);
+                printf("entered integer number is=%f\n",num.f);
+        }
+        else
+                printf("invalid input");
+}
+int main()
+{
+        readandprint();
+        return 0;
+}
+```
+## 20. Define a structure to represent a point in 2D space with x and y coordinates (both integers). Write a function to check if two points are equal (have the same x and y coordinates)
+```c
+#include<stdio.h>
+struct Point
+{
+        int x,y;
+};
+int areequal(struct Point p1, struct Point p2)
+{
+        if((p1.x == p2.x) && (p1.y == p2.y))
+                return 1;
+        else
+                return 0;
+}
+int main()
+{
+        int res;
+        struct Point a;
+        struct Point b;
+        printf("enter x and y coordinates for point 1\n");
+        scanf("%d%d",&a.x,&a.y);
+        printf("enter x and y coordinates for point 2\n");
+        scanf("%d%d",&b.x,&b.y);
+        res=areequal(a,b);
+        if(res)
+                printf("both points are Equal");
+        else
+                printf("points are not Equal");
+        return 0;
+}
+```
+## 21. Create a structure to represent a book with the following members: title (string), author (string), ISBN (long int), and number of pages (int). Write a function to accept details of a book from the user and store them in a structure variable.
+```c
+#include<stdio.h>
+struct Book
+{
+        char title[100];
+        char author[100];
+        long isbn;
+        int nop;
+};
+void fun()
+{
+        struct Book b;
+        printf("enter title of the book\n");
+        fgets(b.title,50,stdin);
+        printf("enter name of the author\n");
+        fgets(b.author,20,stdin);
+        printf("enter isbn number of the book\n");
+        scanf("%ld",&b.isbn);
+        printf("enter number of pages of the book\n");
+        scanf("%d",&b.nop);
+        printf("details of the book are\n");
+        printf("Title = %s\n",b.title);
+        printf("Author = %s\n",b.author);
+        printf("ISBN = %ld\n",b.isbn);
+        printf("Number of pages = %d",b.nop);
+}
+int main()
+{
+        fun();
+        return 0;
+}
+```
+- We can use strcspn() a string function to get clear output(without printing new lines in output)
