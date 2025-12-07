@@ -333,3 +333,124 @@ int main()
 }
 ```
 - We can use strcspn() a string function to get clear output(without printing new lines in output)
+## 22. Define a union to represent the size of a product, which can be specified in centimeters, inches, or feet. Write a function to convert the size from one unit to another (e.g., centimeters to inches).
+```c
+#include<stdio.h>
+union Size
+{
+        float cm;
+        float inches;
+        float feet;
+};
+float inches_to_cm(float c)
+{
+        c=c*2.54;
+        return c;
+}
+float feet_to_cm(float c)
+{
+        c=c*(12*2.54);
+        return c;
+}
+float cm_to_inches(float i)
+{
+        i=i/2.54;
+        return i;
+}
+float cm_to_feet(float f)
+{
+        f=f/(2.54*12);
+        return f;
+}
+int main()
+{
+        union Size s;
+        int inputunit,outputunit;
+        printf("enter: \n1.centimeters\n2.inches\n3.feet\n");
+        scanf("%d",&inputunit);
+        if(inputunit == 1)
+        {
+                printf("enter a value in centimeters\n");
+                scanf("%f",&s.cm);
+        }
+ else if(inputunit == 2)
+        {
+                printf("enter a value in inches\n");
+                scanf("%f",&s.inches);
+        }
+        else if(inputunit == 3)
+        {
+                printf("enter a value in feet\n");
+                scanf("%f",&s.feet);
+        }
+        else
+        {
+                printf("Invalid input");
+                return 0;
+        }
+        printf("\n convert to:\n");
+        printf("1.centimeters\n2.inches\n3.feet\n");
+        scanf("%d",&outputunit);
+        float value_in_cm,result;
+        if(inputunit == 1)
+                value_in_cm=s.cm;
+        else if(inputunit == 2)
+                value_in_cm=inches_to_cm(s.inches);
+        else
+                value_in_cm=feet_to_cm(s.feet);
+        if(outputunit == 1)
+        {
+                result=value_in_cm;
+                printf("Result = %.2f",result);
+        }
+        else if(outputunit == 2)
+        {
+                result=cm_to_inches(value_in_cm);
+                printf("Result = %.2f",result);
+        }
+        else if(outputunit == 3)
+        {
+                result=cm_to_feet(value_in_cm);
+                printf("Result = %.2f",result);
+        }
+        else 
+        {
+                printf("Invalid Output Unit");
+                return 0;
+        }
+        return 0;
+}
+```
+## 23. Define a structure to represent a date with day, month, and year (all integers). Write a function to check if a given year is a leap year.
+```c
+#include<stdio.h>
+struct Date
+{
+        int date;
+        int month;
+        int year;
+};
+int isleap(int y)
+{
+        if((y%4==0 && y%100!=0)||y%400==0)
+                return 1;
+        else
+                return 0;
+}
+int main()
+{
+        struct Date d;
+        printf("enter Date: \n");
+        scanf("%d",&d.date);
+        printf("Enter month: \n");
+        scanf("%d",&d.month);
+        printf("Enter year: \n");
+        scanf("%d",&d.year);
+        int res=isleap(d.year);
+       if(res)
+               printf("year = %d is a leap year",d.year);
+       else
+               printf("year = %d is not a leap year",d.year);
+       return 0;
+}
+```
