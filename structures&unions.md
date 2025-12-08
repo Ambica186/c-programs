@@ -454,3 +454,143 @@ int main()
        return 0;
 }
 ```
+## 24. Define a structure to represent a complex number with real and imaginary parts (both floats). Write a function to add two complex numbers represented by structures.
+```c
+#include<stdio.h>
+struct Complex
+{
+        float real;
+        float imag;
+};
+struct Complex add(struct Complex r1,struct Complex r2)
+{
+        struct Complex result;
+        result.real=r1.real+r2.real;
+        result.imag=r1.imag+r2.imag;
+        return result;
+}
+
+int main()
+{
+        struct Complex c1,c2,sum;
+        printf("Enter first complex number");
+        scanf("%f%f",&c1.real,&c1.imag);
+        printf("Enter second complex number");
+        scanf("%f%f",&c2.real,&c2.imag);
+        sum=add(c1,c2);
+        printf("%.2f+%.2fi",sum.real,sum.imag);
+        return 0;
+}
+```
+## 28. Implement a function that takes a structure representing a date (day, month, year) and checks if the date is valid (e.g., not exceeding the number of days in a month).
+```c
+#include<stdio.h>
+struct Date
+{
+        int day;
+        int month;
+        int year;
+};
+int check(struct Date d)
+{
+        int leap=0,days_in_mon=0;
+        if((d.year%4==0 && d.year%100!=0)||d.year%400==0)
+                leap=1;
+        if(d.month<1||d.month>12)
+        {
+                printf("invalid month");
+                return 0;
+        }
+        if(d.month==2)
+        {
+                days_in_mon=(leap?29:28);
+        }
+        else if(d.month==4 || d.month==6 || d.month==9 || d.month==11)
+        {
+                days_in_mon=30;
+        }
+        else
+                days_in_mon=31;
+        if(d.day<1 || d.day>days_in_mon)
+        {
+                printf("invalid days");
+                return 0;
+        }
+        printf("Valid Date= %d/%d/%d",d.day,d.month,d.year);
+        return 1;
+}
+
+int main()
+{
+        struct Date d;
+        printf("Enter a date : day month year\n");
+        scanf("%d",&d.day);
+        scanf("%d",&d.month);
+        scanf("%d",&d.year);
+        check(d);
+        return 0;
+}
+```
+## 29. Define a union to represent a shape. The union can hold the dimensions of different shapes like circle (radius), rectangle (length, breadth), or triangle (base, height). Write functions to calculate the area of each shape based on the type stored in the union.
+```c
+#include<stdio.h>
+#define PI 3.14
+union Shape
+{
+        float radius;
+        struct Rectangle
+        {
+                float length,breadth;
+        }rect;
+        struct Triangle
+        {
+                float base,height;
+        }tri;
+};
+float a;
+void circle_area(float r)
+{
+        a=PI*r*r;
+        printf("The area of a Circle = %.2f",a);
+}
+void rectangle_area(float l, float b)
+{
+        a=l*b;
+        printf("The area of a Rectangle = %.2f",a);
+}
+void triangle_area(float b, float h)
+{
+        a=0.5*b*h;
+        printf("The area of a Triangle = %.2f",a);
+}
+
+int main()
+{
+        union Shape s;
+        int choice;
+        printf("Enter\n1:circle\n2:rectangle\n3:triangle\n");
+        scanf("%d",&choice);
+ if(choice == 1)
+        {
+                printf("Enter radius: ");
+                scanf("%f",&s.radius);
+                circle_area(s.radius);
+        }
+        else if(choice == 2)
+        {
+                printf("Enter length and breadth ");
+                scanf("%f%f",&s.rect.length,&s.rect.breadth);
+                rectangle_area(s.rect.length,s.rect.breadth);
+        }
+        else if(choice == 3)
+        {
+                printf("Enter base and height ");
+                scanf("%f%f",&s.tri.base,&s.tri.height);
+                triangle_area(s.tri.base,s.tri.height);
+        }
+        else
+                printf("Invalid Choice");
+        return 0;
+}
+```
+## 31. Implement a function that takes a structure representing a time (hours, minutes, seconds) and performs basic time arithmetic (e.g., adding two time durations).
