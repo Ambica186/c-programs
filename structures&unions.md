@@ -594,3 +594,194 @@ int main()
 }
 ```
 ## 31. Implement a function that takes a structure representing a time (hours, minutes, seconds) and performs basic time arithmetic (e.g., adding two time durations).
+```c
+#include<stdio.h>
+struct Time add(struct Time t1,struct Time t2);
+struct Time
+{
+        int hrs;
+        int mins;
+        int secs;
+};
+struct Time add(struct Time t1, struct Time t2)
+{
+        struct Time res;
+        res.secs=t1.secs+t2.secs;
+        res.mins=t1.mins+t2.mins+(res.secs/60);
+        res.hrs=t1.hrs+t2.hrs+(res.mins/60);
+        res.mins%=60;
+        res.secs%=60;
+        return res;
+}
+int main()
+{
+        struct Time t1,t2,total_time;
+        printf("enter first time (hours minutes seconds):");
+        scanf("%d%d%d",&t1.hrs,&t1.mins,&t1.secs);
+        printf("enter second time (hours minutes seconds):");
+        scanf("%d%d%d",&t2.hrs,&t2.mins,&t2.secs);
+        total_time=add(t1,t2);
+        printf("Total Time = %dhours:%dmins:%dsecs",total_time.hrs,total_time.mins,total_time.secs);
+        return 0;
+}
+```
+
+## 37. Analyze the following code snippet and explain the potential issue:
+```c
+union data {
+int i;
+float f;
+};
+int main() {
+union data value;
+value.i = 10;
+printf("Float value (before modification): %f\n", value.f);
+value.f = 3.14;
+printf("Float value (after modification): %f\n", value.f);
+return 0;
+}
+Explain what happens to the value of i after modifying the union member f.
+```
+- In a union, all members share the same memory location. When the float member f is modified, it overwrites the memory that was previously used by the integer member i. Therefore, the value of i is lost and becomes undefined. Accessing i after modifying f results in a garbage or unpredictable value.
+## 38 .what is the size of the structure
+```c
+#include <stdio.h>
+typedef struct
+{
+char A;
+int B;
+char C;
+} InfoData;
+int main(int argc, char *argv[])
+{
+//Calculate size of structure
+printf("\n Size of Structure = %d\n\n",sizeof(InfoData));
+return 0;
+}
+what is the size of the structure
+```
+- ans = Size of the structure = 12 bytes
+## 40.Size of structure
+```c
+#include <stdio.h>
+typedef struct
+{
+double A;
+char B;
+char C;
+} InfoData;
+int main(int argc, char *argv[])
+{
+//Calculate size of structure
+printf("\n Size of Structure = %d\n\n",sizeof(InfoData));
+return 0;
+}
+```
+- ans = Size of the structure = 16 bytes
+## 41.what is the size of the structure
+```c
+#include <stdio.h>
+typedef struct
+{
+int A;
+int B;
+char C;
+char D;
+float E;
+} InfoData;
+int main(int argc, char *argv[])
+{
+//Calculate size of structure
+printf("\n Size of Structure = %d\n\n",sizeof(InfoData));
+return 0;
+}
+```
+- ans = Size of the structure = 16 bytes
+## 42.what is the size of the structure
+```c
+#include <stdio.h>
+typedef struct
+{
+char A;
+char B;
+} InfoData;
+int main(int argc, char *argv[])
+{
+//Calculate size of structure
+printf("\n Size of Structure = %d\n\n",sizeof(InfoData));
+return 0;
+}
+```
+- ans = The size of this structure is 2 bytes.
+## 43.what is the size of the structure.
+```c
+#include <stdio.h>
+typedef struct
+{
+char A;
+short B;
+int C;
+char D;
+} InfoData;
+int main(int argc, char *argv[])
+{
+//Calculate size of structure
+printf("\n Size of Structure = %d\n\n",sizeof(InfoData));
+return 0;
+}
+```
+- ans = The size of this structure is typically 12 bytes.
+## 44.what is the size of the structure.
+```c
+#include <stdio.h>
+typedef struct
+{
+char A;
+double B;
+char C;
+} InfoData;
+int main(int argc, char *argv[])
+{
+//Calculate size of structure
+printf("\n Size of Structure = %d\n\n",sizeof(InfoData));
+return 0;
+}
+```
+- ans = The size of this structure is typically 24 bytes.
+## 45.what is the size of the structure
+```c
+#include <stdio.h>
+typedef struct
+{
+char A;
+char B;
+short C;
+int D;
+} InfoData;
+int main(int argc, char *argv[])
+{
+//Calculate size of structure
+printf("\n Size of Structure = %d\n\n",sizeof(InfoData));
+return 0;
+}
+```
+- The size of this structure is typically 8 bytes
+## 46.what is the size of the structure
+```c
+#include <stdio.h>
+#pragma pack(push, 1)
+typedef struct
+{
+double A;
+char B;
+} InfoData;
+#pragma pack(pop)
+/* main function */
+int main(int argc, char *argv[])
+{
+printf("\n Size of Structure = %d\n\n\n\n",sizeof(InfoData));
+return 0;
+}
+```
+- ans = Size of the structure = 9 bytes
+- Because #pragma pack(1) forces 1-byte alignment, no padding is added, and the structure size becomes 9 bytes.
