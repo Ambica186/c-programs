@@ -98,4 +98,32 @@ int main()
         return 0;
 }
 ```
+## Write a program in C to compare two strings without using string library functions
+```c
+#include<stdio.h>
+int main()
+{
+        char a[20],b[20];
+        printf("enter first string: ");
+        scanf("%s",a);
+        printf("enter second string: ");
+        scanf("%s",b);
+        int i=0,flag=0;
+        while(a[i]!='\0' && b[i]!='\0')
+        {
+                if(a[i]!=b[i])
+                {
+                        flag=1;
+                        break;
+                }
+                i++;
+        }
+        if(flag)
+                printf("String are not equal ");
+        else
+                printf("Strings are  equal ");
+        return 0;
+}
+```
+## Write a program in C to count the total number of alphabets, digits and special characters in a string.
 
